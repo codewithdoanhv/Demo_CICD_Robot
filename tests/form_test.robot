@@ -26,9 +26,17 @@ Successful Form Submission
 *** Keywords ***
 Open Browser To Input Box
     [Documentation]    Open the browser and navigate to the input box page
-    Open Browser    ${URL}    ${BROWSER}    options=add_argument(--headless),add_argument(--no-sandbox),add_argument(--disable-dev-shm-usage),add_argument(--incognito)
+    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
+    Call Method    ${options}    add_argument    --headless
+    Call Method    ${options}    add_argument    --no-sandbox
+    Call Method    ${options}    add_argument    --disable-dev-shm-usage
+    Call Method    ${options}    add_argument    --incognito
+
+    Create WebDriver    Chrome    chrome_options=${options}
+    Go To    ${URL}
     Maximize Browser Window
     Wait Until Page Contains Element    id=userName
+
 
 
 Input Username
