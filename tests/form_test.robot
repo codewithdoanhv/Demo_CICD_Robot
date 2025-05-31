@@ -32,10 +32,11 @@ Open Browser To Input Box
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
     Call Method    ${options}    add_argument    --incognito
 
-    Create WebDriver    Chrome    chrome_options=${options}
+    Create WebDriver    Chrome    options=${options}
     Go To    ${URL}
     Maximize Browser Window
     Wait Until Page Contains Element    id=userName
+
 
 
 
