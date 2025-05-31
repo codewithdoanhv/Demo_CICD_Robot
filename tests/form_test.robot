@@ -9,6 +9,7 @@ ${VALID_USER}     Doanh Automation Test
 ${VALID_EMAIL}    codewithdoanhv@yopmail.com
 
 *** Test Cases ***
+#TC
 Successful Form Submission
     [Documentation]    Test form submission with scroll to submit button
     Open Browser To Input Box
