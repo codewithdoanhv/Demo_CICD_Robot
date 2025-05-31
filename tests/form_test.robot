@@ -26,10 +26,10 @@ Successful Form Submission
 *** Keywords ***
 Open Browser To Input Box
     [Documentation]    Open the browser and navigate to the input box page
-    Open Browser    ${URL}    ${BROWSER}
+    Open Browser    ${URL}    ${BROWSER}    options=add_argument(--headless),add_argument(--no-sandbox),add_argument(--disable-dev-shm-usage),add_argument(--incognito)
     Maximize Browser Window
-    # Chờ cho trang tải xong và phần tử có thể tương tác
     Wait Until Page Contains Element    id=userName
+
 
 Input Username
     [Documentation]    Input the username into the form
