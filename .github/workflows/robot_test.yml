@@ -2,7 +2,7 @@ name: Run Robot Framework Tests
 
 on:
   schedule:
-    - cron: '20 10 31 5 *'  # Chạy hàng ngày lúc 10 giờ 20p sáng UTC
+    - cron: '26 03 31 5 *'  # Chạy hàng ngày lúc 03 giờ 26p sáng UTC
   workflow_dispatch:      # Cho phép chạy thủ công trên GitHub UI
 
 jobs:
