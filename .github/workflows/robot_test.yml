@@ -1,0 +1,37 @@
+name: Run Robot Framework Tests
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # Chạy hàng ngày lúc 2 giờ sáng UTC
+  workflow_dispatch:      # Cho phép chạy thủ công trên GitHub UI
+
+jobs:
+  run-robot-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        webdrivermanager chrome:latest
+
+    - name: Run Robot Tests
+      run: |
+        robot --output output.xml --log log.html --report report.html tests/
+
+    - name: Upload Robot Logs
+      uses: actions/upload-artifact@v4
+      with:
+        name: robot-report
+        path: |
+          output.xml
+          log.html
+          report.html
